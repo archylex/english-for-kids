@@ -16,16 +16,24 @@ body {
 
 nav {
   display: flex;
-  width: 100%;
+  width: 90%;
   justify-content: space-between;
   align-items: center;
+  margin: auto;
 }
 
 .container {
   display: flex;
   width: 90%;
+  height: auto;
   flex-direction: column;
   margin: auto;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.container-hide {
+  opacity: 0;
 }
 
 .tint__screen {
@@ -73,7 +81,7 @@ nav {
 }
 
 .nav-icon-hover {
-  transform: translateX(170px);
+  transform: translateX(80px);
 }
 
 /* Menu */
@@ -546,6 +554,8 @@ footer {
   justify-content: space-around;
   align-items: center;
   margin: auto;
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 footer .rss_logo {
   width: 100px;
@@ -561,6 +571,10 @@ footer .rss_logo {
     width: 20vw;
     height: 20vw;
   }
+
+  .nav-icon-hover {
+    transform: translateX(120px);
+  }
 }
 @media screen and (max-width: 600px) {
   .cards__box {
@@ -570,6 +584,11 @@ footer .rss_logo {
   .cards__box-card {
     width: 80vw;
     height: 80vw;
+    justify-self: center;
+  }
+
+  .nav-icon-hover {
+    transform: translateX(160px);
   }
 }
 
