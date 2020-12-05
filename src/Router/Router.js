@@ -2,6 +2,7 @@ export default class Router {
   constructor(routes) {
     this.routes = routes;
     this.container = document.querySelector('.container');
+    this.footer = document.querySelector('footer');
   }
 
   start() {
@@ -38,7 +39,17 @@ export default class Router {
     }
   }
 
-  goToRoute(html, params) {
+  showContainer() {
+    this.footer.classList.remove('container-hide'); 
+    this.container.classList.remove('container-hide');
+  }
+
+  hideContainer() {
+    this.footer.classList.add('container-hide');
+    this.container.classList.add('container-hide');
+  }
+
+  toRoute(html, params) {
     this.clearContainer();
 
     if (typeof html === 'function') {
@@ -47,7 +58,16 @@ export default class Router {
       const url = `views/${html}`;
       fetch(url)
         .then((res) => res.text())
-        .then((data) => this.container.innerHTML = data);
+        .then((data) => this.container.innerHTML = data);              
     }
+
+    this.showContainer();
+  }
+
+  goToRoute(html, params) {    
+    this.hideContainer();
+    setTimeout((() => {
+      this.toRoute(html, params);
+    }).bind(this), 500);
   }
 }
