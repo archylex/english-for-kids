@@ -1,0 +1,576 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*:active,
+*:focus {
+  outline: 0;
+}
+
+body {
+  background: linear-gradient(0deg, #22c1c3 0%, #fdbb2d 200%);
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  margin: auto;
+}
+
+.tint__screen {
+  position: absolute;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* nav icon button */
+.nav-icon {
+  margin: 1em;
+  width: 40px;
+  height: auto;
+  z-index: 1100;
+  left: 10px;
+  transition: transform 0.5s;
+}
+
+.nav-icon:after,
+.nav-icon:before,
+.nav-icon div {
+  background-color: #fff;
+  border-radius: 3px;
+  content: "";
+  display: block;
+  height: 5px;
+  margin: 7px 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-icon-hover:before {
+  transform: translateY(12px) rotate(135deg);
+}
+
+.nav-icon-hover:after {
+  transform: translateY(-12px) rotate(-135deg);
+}
+
+.nav-icon-hover div {
+  transform: scale(0);
+}
+
+.nav-icon-hover {
+  transform: translateX(170px);
+}
+
+/* Menu */
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 250px;
+  height: 100vh;
+  left: -270px;
+  top: 0;
+  z-index: 1000;
+  align-items: center;
+  background: linear-gradient(0deg, rgba(184, 189, 17, 0.8) 0%, rgba(161, 9, 9, 0.8) 50%, rgba(159, 100, 17, 0.8) 100%);
+  box-shadow: 10px 0px 10px #00000033;
+  transition: transform 0.5s;
+}
+.menu ul {
+  list-style: none;
+  margin-top: 70px;
+}
+.menu ul li {
+  display: grid;
+  grid-template-columns: 30% auto;
+  width: 220px;
+  height: auto;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  font-family: "Amatic SC", cursive;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 12px;
+  transition: all 0.5s;
+}
+.menu ul li:hover {
+  background-color: #ff9900c4;
+  transition: all 0.5s;
+}
+
+.menu-item-active {
+  background-color: #4a8d0cc4;
+}
+
+.menu-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  margin-left: 15px;
+}
+.menu-icon img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.menu-show {
+  transform: translateX(270px);
+}
+
+.start__game__button {
+  display: flex;
+  width: 100px;
+  height: 34px;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  font-family: "Amatic SC", cursive;
+  font-weight: bold;
+  font-size: 24px;
+  border: 0;
+  border-radius: 20px;
+  color: #ffffff;
+  background-color: #eea34d;
+  color: white;
+  transition: all 0.5s;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.start__game__button:hover {
+  background-color: #f3870c;
+}
+
+.start__game__button-show {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* swith train/play */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 96px;
+  height: 34px;
+  margin-right: 20px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 34px;
+  background-color: #FFB762;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:after {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  border-radius: 50%;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "PLAY";
+  height: 26px;
+  width: 36px;
+  left: 43px;
+  bottom: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #6acbfe;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #6acbfe;
+}
+
+input:checked + .slider:after {
+  -webkit-transform: translateX(62px);
+  -ms-transform: translateX(62px);
+  transform: translateX(62px);
+}
+
+input:checked + .slider:before {
+  content: "TRAIN";
+  -webkit-transform: translateX(-32px);
+  -ms-transform: translateX(-32px);
+  transform: translateX(-32px);
+}
+
+/* home */
+.home__page {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  margin-bottom: 35px;
+}
+
+/* Game over fragment */
+.game__over {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game__over-text {
+  display: flex;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: "Amatic SC", cursive;
+  margin: 25px;
+}
+
+.game__over-image {
+  display: flex;
+  width: 50%;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+}
+.game__over-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.nav__bar {
+  display: grid;
+  grid-template-columns: auto 150px;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+}
+
+/* stars bar */
+.star__bar {
+  display: inline-flex;
+  overflow: hidden;
+  /*justify-content: flex-end*/
+  width: 100%;
+  height: 50px;
+}
+
+.star__bar-star {
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  margin-right: 5px;
+}
+.star__bar-star img {
+  max-height: 100%;
+}
+
+/* cards container */    
+.cards__page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+
+.cards__box {
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-row: auto;
+  width: 100%;
+  height: auto;
+  margin-bottom: 35px;
+}
+
+.cards__box-card {
+  width: 16vw;
+  height: 16vw;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  perspective: 1000px;
+  background-color: transparent;
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.cards__box-card-deactive {
+  opacity: 0.5;
+}
+
+.cards__box-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cards__box-card-inner:hover {
+  box-shadow: -1px 15px 30px -12px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.cards__box-card-rotate .cards__box-card-inner {
+  transform: rotateY(180deg);
+}
+
+.cards__box-card-inner-front, .cards__box-card-inner-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.cards__box-card-inner-front {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards__box-card-inner-back {
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(180deg);
+}
+
+.cards__box-card-image {
+  display: flex;
+  width: 100%;
+  height: 75%;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  transform: scale(0.7);
+  transition: transform 0.4s;
+}
+.cards__box-card-image img {
+  max-width: 70%;
+  max-height: 77%;
+}
+
+.cards__box-card-image-big {
+  transform: scale(1) translateY(15%);
+}
+
+.cards__box-card-word {
+  display: flex;
+  width: 100%;
+  height: 25%;
+  justify-content: center;
+  font-family: "Amatic SC", cursive;
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 3px;
+  transform: translateY(-15px);
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.cards__box-card-word-hide {
+  opacity: 0;
+}
+
+.cards__box-card-button {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 0;
+  opacity: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: opacity 0.4s;
+  cursor: pointer;
+}
+.cards__box-card-button img {
+  width: 70%;
+  height: 70%;
+}
+
+.cards__box-card-button-hide {
+  opacity: 0;
+}
+
+.cards__box-card-category {
+  position: absolute;
+  display: flex;
+  left: 0px;
+  bottom: 0px;
+  width: 37%;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* statistic table */
+.stats__table {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 20% 20% 20% 10% 10% 10% 10%;
+}
+
+.stats__table:last-child {
+  margin-bottom: 25px;
+}
+
+.stats__table-item__header {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 22px;
+  background-color: #25b6f0;
+  cursor: pointer;
+}
+
+.stats__table-item__header:hover {
+  background-color: #2bf1ff;
+}
+
+.stats__table-item {
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 22px;
+  background-color: #77777777;
+}
+
+.stats__table-item:nth-child(14n),
+.stats__table-item:nth-child(14n-1),
+.stats__table-item:nth-child(14n-2),
+.stats__table-item:nth-child(14n-3),
+.stats__table-item:nth-child(14n-4),
+.stats__table-item:nth-child(14n-5),
+.stats__table-item:nth-child(14n-6) {
+  background-color: #65656577;
+}
+
+.main__nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.stats_reset,
+.stats_repeat {
+  display: flex;
+  width: 100px;
+  height: 34px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Amatic SC", cursive;
+  font-weight: bold;
+  font-size: 24px;
+  border: 0;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  color: #ffffff;
+  background-color: #25b6f0;
+  color: white;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.stats_repeat {
+  width: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.stats_reset:hover,
+.stats_repeat:hover {
+  background-color: #2bf1ff;
+}
+
+footer {
+  display: flex;
+  width: 80%;
+  height: 75px;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+footer .rss_logo {
+  width: 100px;
+  height: 60px;
+}
+
+@media screen and (max-width: 1200px) {
+  .cards__box {
+    grid-template-columns: repeat(4, 25%);
+  }
+
+  .cards__box-card {
+    width: 20vw;
+    height: 20vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  .cards__box {
+    grid-template-columns: repeat(1, 100%);
+  }
+
+  .cards__box-card {
+    width: 80vw;
+    height: 80vw;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
