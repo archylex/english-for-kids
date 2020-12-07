@@ -576,6 +576,20 @@ footer .rss_logo {
     transform: translateX(120px);
   }
 }
+@media screen and (max-width: 831px) {
+  .cards__box {
+    grid-template-columns: repeat(2, 50%);
+  }
+
+  .cards__box-card {
+    width: 40vw;
+    height: 40vw;
+  }
+
+  .nav-icon-hover {
+    transform: translateX(135px);
+  }
+}
 @media screen and (max-width: 600px) {
   .cards__box {
     grid-template-columns: repeat(1, 100%);
