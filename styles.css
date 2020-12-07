@@ -601,6 +601,10 @@ footer .rss_logo {
     height: 80vw;
     justify-self: center;
   }
+  
+  .cards__box-word {
+    font-size: 45px;
+  }
 
   .nav-icon-hover {
     transform: translateX(160px);
